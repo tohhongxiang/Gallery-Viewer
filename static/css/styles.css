@@ -1,0 +1,21 @@
+body {
+	background-color: #121212;
+}
+
+#img-carousel {
+	height: 100vh;
+}
+
+#image-carousel img {
+	height:100vh;
+}
+
+.card {
+	display: inline-block;
+}
+
+
+
+
+
+
