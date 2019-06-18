@@ -10,14 +10,15 @@ len_images = len(images)
 print(str(len(images)) + "images loaded")
 
 @app.route("/")
-def home():
+@app.route("/carousel")
+def carousel():
 	shuffle(images)
-	return render_template("index.html", images=images, len_images=len_images)
+	return render_template("pic_gallery.html", images=images, len_images=len_images, title="Carousel")
 
 @app.route("/list")
 def list():
 	shuffle(images)
-	return render_template("index.html", images=images, len_images=len_images)
+	return render_template("list.html", images=images, len_images=len_images, title="List")
 
 if __name__ == "__main__":
 	app.run(debug=True)
