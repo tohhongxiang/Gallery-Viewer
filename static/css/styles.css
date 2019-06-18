@@ -1,3 +1,9 @@
+* {
+	color: #FFFFFF;
+	padding: 0;
+	margin:0 auto;
+}
+
 body {
 	background-color: #121212;
 }
@@ -10,11 +16,39 @@ body {
 	height:100vh;
 }
 
+#image-carousel .carousel-indicators li { /* Change default flat rectangle carousel indicator to round bullets */
+	width:5px;
+	height:5px;
+	border-radius: 100%;
+}
+
 .card {
 	display: inline-block;
 }
 
+#nav {
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	z-index:2000;
+	opacity:0;
+	transition-delay:0.4s; /* The hover delays is to give the effect of appearing immediately, but disappearing after a delay */
+}
 
+#nav:hover {
+	opacity:1;
+	transition-delay:0s;
+}
+
+#nav li {
+	padding: 0;
+	margin: 0 10px;
+}
+
+#nav li[class~="active"] { /* attribute selector */
+	border-bottom: 2px solid #1a1aff;
+}
 
 
 
