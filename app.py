@@ -5,20 +5,19 @@ from random import shuffle
 app = Flask(__name__)
 
 image_dir = "static/images"
-images = os.listdir(image_dir)
+images = [image for image in os.listdir(image_dir) if image.split(".")[-1].lower() in ["jpg", "png", "jpeg", "bmp", "gif"]]
 len_images = len(images)
 print(str(len(images)) + "images loaded")
 
 @app.route("/")
-@app.route("/carousel")
-def carousel():
+def home():
 	shuffle(images)
-	return render_template("pic_gallery.html", images=images, len_images=len_images, title="Carousel")
+	return render_template("index.html", images=images, len_images=len_images)
 
 @app.route("/list")
 def list():
 	shuffle(images)
-	return render_template("list.html", images=images, len_images=len_images, title="List")
+	return render_template("index.html", images=images, len_images=len_images)
 
 if __name__ == "__main__":
 	app.run(debug=True)
