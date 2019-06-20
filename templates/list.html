@@ -13,8 +13,17 @@
 	<div class="card-columns" id="card-group">
 		{% for i in range(len_images) %}
 			<div class="card">
-				<img class="card-img-top" src="{{url_for('static', filename='images/'+images[i])}}" alt={{images[i]}}>
+				<a href="#{{ images[i] }}">
+					<img class="card-img-top" src="{{url_for('static', filename='images/'+images[i])}}" alt={{images[i]}}>
+				</a>
 			</div>
 		{% endfor %}
 	</div>
+
+	<!-- Lightbox, hidden by default -->
+	{% for i in range(len_images) %}
+	<a href="#" class="lightbox" id="{{ images[i] }}">
+		<img src="{{url_for('static', filename='images/'+images[i])}}" alt={{images[i]}}>
+	</a>
+	{% endfor %}
 {% endblock content %}
