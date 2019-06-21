@@ -52,29 +52,21 @@ body {
 	border-bottom: 2px solid #1a1aff;
 }
 
-.lightbox {
-  /** Default lightbox to hidden */
-  display: none;
-
-  /** Position and style */
-  position: fixed; /* If not fixed, will only appear at the bottom of the screen */
-  width: 100%;
-  height: 100%;
-  text-align: center; /* aligns the image vertically in the center */
-  top: 0; /* Need this to position fixed elements */
-  left: 0;
-  background: rgba(0,0,0,0.8);
+.lightbox:active {
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	object-fit: scale-down;
+	background-color: rgba(0,0,0,0.8);
+	z-index:1;
+	text-align:center;
 }
 
-.lightbox img {
-  /** Pad the lightbox image */
-  max-width: 90vw;
-  max-height: 90vh;
-}
-
-.lightbox:target { /* When a link with the target being the id of the element is clicked */
-  /** Unhide lightbox **/
-  display: block;
+.lightbox:active img {
+	height:100%;
+	width:auto;
 }
 
 
