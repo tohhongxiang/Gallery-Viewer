@@ -1,0 +1,22 @@
+<!-- Simple layout to display what albums i have -->
+{% extends "index.html" %}
+{% set active_page="albums" %}
+
+{% block content %}
+<div class="d-flex justify-content-center flex-wrap">
+	{% for i in range(album_titles|length) %}
+		<div class="container container-fluid album-list">
+			<a href="{{url_for('view_album', album=album_titles[i])}}">
+			<div class="row">
+				<div class="col-md-6 album-title">
+					<h5> {{album_titles[i]}} </h5>
+				</div>
+				<div class="col-md-6 img-container">
+					<img src="{{ album_pics[i][0] }}" alt={{ album_pics[i][0] }}>
+				</div>
+			</div>
+			</a>
+		</div>
+	{% endfor %}
+</div>
+{% endblock content %}

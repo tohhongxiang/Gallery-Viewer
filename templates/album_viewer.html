@@ -1,0 +1,45 @@
+<!-- A basic carousel page to view the album -->
+{% extends "index.html" %}
+{% set active_page="albums" %}
+
+{% block content %}
+	<!-- carousel -->
+	<div id="image-carousel" class="carousel d-flex align-items-center" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			{% for i in range(current_album_pics|length) %}
+				{% if i==0 %}
+					<li data-target="#image-carousel" data-slide-to={{i}} class="active"></li>
+				{% else %}
+					<li data-target="#image-carousel" data-slide-to={{i}}></li>
+				{% endif %}
+			{% endfor %}
+		</ol>
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner text-center">
+			{% for i in range(current_album_pics|length) %}
+				{% if i==0 %}
+					<div class="carousel-item active">
+						<img src="{{url_for('static', filename='albums/' + current_album_title + '/' + current_album_pics[i])}}" alt={{current_album_pics[i]}}>
+						  <div class="carousel-caption d-md-block">
+						    <h6>{{ current_album_title }}</h6>
+						  </div>
+					</div>
+				{% else %}
+					<div class="carousel-item">
+						<img src="{{url_for('static', filename='albums/' + current_album_title + '/' + current_album_pics[i])}}" alt={{current_album_pics[i]}}>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+		<!-- Nav -->
+		<a class="left carousel-control-prev" href="#image-carousel" data-slide="prev"><</a>
+		<a class="right carousel-control-next" href="#image-carousel" data-slide="next">></a>
+	</div>
+
+	
+	
+	
+{%endblock%}
