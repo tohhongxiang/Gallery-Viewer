@@ -3,20 +3,17 @@
 {% set active_page="albums" %}
 
 {% block content %}
-<div class="d-flex justify-content-center flex-wrap">
+<div class="albums">
 	{% for i in range(album_titles|length) %}
-		<div class="container container-fluid album-list">
-			<a href="{{url_for('view_album', album=album_titles[i])}}">
-			<div class="row">
-				<div class="col-md-6 album-title">
-					<h5> {{album_titles[i]}} </h5>
-				</div>
-				<div class="col-md-6 img-container">
-					<img src="{{ album_pics[i][0] }}" alt={{ album_pics[i][0] }}>
-				</div>
+	<a href="{{url_for('view_album', album=album_titles[i])}}">
+		<div class="album">
+			<img src="{{ album_pics[i][0] }}" alt="{{ album_pics[i][0] }}">
+
+			<div class="album-details">
+				<h6> {{album_titles[i]}} </h6>
 			</div>
-			</a>
 		</div>
+	</a>
 	{% endfor %}
 </div>
 {% endblock content %}
