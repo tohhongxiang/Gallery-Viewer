@@ -1,29 +1,15 @@
+<!-- Simple card column to display images -->
 {% extends "index.html" %}
-
-{% block navbar_items %}
-	<li class="nav-item">
-		<a class="nav-link" href="{{url_for('carousel')}}">Carousel</a>
-	</li>
-	<li class="nav-item active">
-		<a class="nav-link" href="{{url_for('list')}}">List</a>
-	</li>
-{% endblock navbar_items %}
+{% set active_page="list" %}
 
 {% block content %}
 	<div class="card-columns" id="card-group">
-		{% for i in range(len_images) %}
+		{% for i in range(images|length) %}
 			<div class="card">
-				<a href="#{{ images[i] }}">
+				<a href="#{{ images[i] }}" class="lightbox">
 					<img class="card-img-top" src="{{url_for('static', filename='images/'+images[i])}}" alt={{images[i]}}>
 				</a>
 			</div>
 		{% endfor %}
 	</div>
-
-	<!-- Lightbox, hidden by default -->
-	{% for i in range(len_images) %}
-	<a href="#" class="lightbox" id="{{ images[i] }}">
-		<img src="{{url_for('static', filename='images/'+images[i])}}" alt={{images[i]}}>
-	</a>
-	{% endfor %}
 {% endblock content %}

@@ -1,0 +1,40 @@
+<!-- Simple bootstrap carousel to display images -->
+{% extends "index.html" %}
+{% set active_page="carousel" %}
+
+{% block content %}
+	<!-- carousel -->
+	<div id="image-carousel" class="carousel d-flex align-items-center" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			{% for i in range(images|length) %}
+				{% if i==0 %}
+					<li data-target="#image-carousel" data-slide-to={{i}} class="active"></li>
+				{% else %}
+					<li data-target="#image-carousel" data-slide-to={{i}}></li>
+				{% endif %}
+			{% endfor %}
+		</ol>
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner text-center">
+			{% for i in range(images|length) %}
+				{% if i==0 %}
+					<div class="carousel-item active">
+						<img src="{{url_for('static', filename='images/'+images[i])}}" alt={{images[i]}}>
+					</div>
+				{% else %}
+					<div class="carousel-item">
+						<img src="{{url_for('static', filename='images/'+images[i])}}" alt={{images[i]}}>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+		<!-- Nav -->
+		<a class="left carousel-control-prev" href="#image-carousel" data-slide="prev"><</a>
+		<a class="right carousel-control-next" href="#image-carousel" data-slide="next">></a>
+	</div>
+	
+	
+{%endblock%}
