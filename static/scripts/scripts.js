@@ -1,3 +1,4 @@
+// using arrow keys to control carousel
 $(document).keydown(function(e) { //on keydown
 if (e.keyCode === 37) { // if left arrow
    // Previous
@@ -11,6 +12,7 @@ if (e.keyCode === 39) { // if right arrow
 }
 });
 
+// lazy loading of carousel. add .lazy to carousel to allow
 $(function() {
 	return $(".carousel.lazy").on("slide.bs.carousel", function(e){
 		var lazy;
@@ -19,3 +21,5 @@ $(function() {
 		lazy.removeAttr("data-src");
 	});
 });
+
+// list overlay thing

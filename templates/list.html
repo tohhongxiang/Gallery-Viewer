@@ -3,6 +3,10 @@
 {% set active_page="list" %}
 
 {% block content %}
+	<div class="overlay">
+		<img>
+		<button class="close btn btn-danger"> X </button>
+	</div>
 	<div class="card-columns" id="card-group">
 		{% for i in range(images|length) %}
 			<div class="card">
@@ -12,4 +16,25 @@
 			</div>
 		{% endfor %}
 	</div>
+
+	<script>
+		const cards = document.querySelectorAll(".card");
+		const overlay = document.querySelector(".overlay");
+		const overlayImg = overlay.querySelector("img");
+		// const overlayClose = overlay.querySelector(".close");
+
+		function handleClick(e) {
+			const src = e.target.src;
+			overlayImg.src = src;
+			overlay.classList.add("open");
+		}
+
+		function close() {
+			overlay.classList.remove("open");
+		}
+
+		cards.forEach(item => item.addEventListener("click", handleClick)); // select all cards, and when click, expand the image out
+		overlay.addEventListener("click", close); // when any click happens on the overlay, close the overlay
+
+	</script>
 {% endblock content %}
