@@ -3,9 +3,9 @@
 {% set active_page="list" %}
 
 {% block content %}
-	<div class="overlay">
+	<div class="overlay"> <!-- Is display:none, with no img src. When an img is clicked, this appears and img src set to clicked img -->
 		<img>
-		<button class="close btn btn-danger"> X </button>
+		<button class="close btn btn-outline-danger btn-close"> &times </button>
 	</div>
 	<div class="card-columns" id="card-group">
 		{% for i in range(images|length) %}
@@ -35,6 +35,5 @@
 
 		cards.forEach(item => item.addEventListener("click", handleClick)); // select all cards, and when click, expand the image out
 		overlay.addEventListener("click", close); // when any click happens on the overlay, close the overlay
-
 	</script>
 {% endblock content %}

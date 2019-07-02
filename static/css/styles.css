@@ -121,6 +121,12 @@ body {
 	text-align: left;
 }
 
+.btn-close {
+	color: white !important;
+	font-weight: 100; 
+	font-size: 40px;
+}
+
 #btn-back {
 	position: fixed;
 	bottom: 5px;
