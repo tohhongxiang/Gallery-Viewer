@@ -140,4 +140,8 @@ body {
 	opacity: 1;
 }
 
+.hover-pointer {
+	cursor: pointer;
+}
+
 
