@@ -151,3 +151,42 @@ body {
 	padding: 20px;
 }
 
+.masonry {
+	display: grid;
+	grid-gap: 1em;
+	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.masonry .card {
+	overflow: hidden;
+	margin-bottom: 1em;
+}
+
+.masonry .card img, .masonry-column .card img {
+	min-width: 100%;
+	min-height: 100%;
+	object-fit: cover;
+}
+
+.masonry-column {
+	margin: 1.5em auto;
+	column-gap: 1em;
+  	column-count: 4;
+}
+
+.gutterless, .gutterless .div {
+	column-gap: 0;
+	margin: 0;
+}
+
+.no-corner {
+	border-radius: 0;
+}
+
+.no-border {
+	border: none;
+}
+
+.card:hover {
+	
+}
