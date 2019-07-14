@@ -44,12 +44,18 @@
 	 	<h2> {{ current_album_title }} </h2>
 	 </div>
 
-	<div class="card-columns" id="card-group">
+	<div id="card-group" class="masonry">
 		{% for i in range(current_album_pics|length) %}
 			<div class="card hover-pointer">
 				<img class="card-img-top" src="{{url_for('static', filename='assets/unloaded.png')}}" data-src="{{url_for('static', filename='albums/' + current_album_title + '/' + current_album_pics[i])}}" alt={{current_album_pics[i]}} data-target="#image-carousel" data-slide-to={{ i }}>
 			</div>
 		{% endfor %}
 	</div>
+
+	<style>
+		.card-custom {
+
+		}
+	</style>
 
 {%endblock%}
