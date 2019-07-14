@@ -35,11 +35,13 @@ body {
 
 .overlay {
 	position:fixed;
+	top: 0;
+	left: 0;
 	display: none;
 	height: 100vh;
 	width: 100vw;
 	background: rgba(0, 0, 0, 0.8);
-	z-index:2;
+	z-index:50;
 }
 
 .overlay .close {
@@ -144,4 +146,8 @@ body {
 	cursor: pointer;
 }
 
+.title h2 {
+	font-size: 50px;
+	padding: 20px;
+}
 

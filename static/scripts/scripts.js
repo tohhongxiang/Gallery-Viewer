@@ -22,4 +22,41 @@ $(function() {
 	});
 });
 
-// list overlay thing
+// lazy loading everything in a card
+const cards = document.querySelectorAll(".card");
+
+		// lazyloading the images
+		const lazyLoad = target => {
+			const observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						const img = entry.target.querySelector("img");
+						const src = img.getAttribute("data-src");
+						img.setAttribute("src", src);
+						observer.disconnect();
+					}
+				});
+			});
+			observer.observe(target);
+		};
+
+		cards.forEach(lazyLoad);
+
+const overlay = document.querySelector(".overlay");
+const overlayImg = overlay.querySelector("img");
+// const overlayClose = overlay.querySelector(".close");
+
+// When image is clicked, expand it
+function handleClick(e) {
+	const src = e.target.src;
+	overlayImg.src = src;
+	overlay.classList.add("open");
+}
+
+// handles closing the expanded image
+function close() {
+	overlay.classList.remove("open");
+}
+
+cards.forEach(item => item.addEventListener("click", handleClick)); // select all cards, and when click, expand the image out
+overlay.addEventListener("click", close); // when any click happens on the overlay, close the overlay
