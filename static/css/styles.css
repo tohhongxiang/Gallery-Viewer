@@ -81,8 +81,8 @@ body {
 
 .card {
 	display: inline-block;
-	min-width: 100px;
-	min-heigth: 100px;
+	min-width: 100%;
+	min-height: 100px;
 }
 
 .albums {
@@ -164,21 +164,22 @@ body {
 	margin-bottom: 1em;
 }
 
-.masonry .card img, .masonry-column .card img {
+.masonry .card img, .masonry-columns .card img {
 	min-width: 100%;
 	min-height: 100%;
 	object-fit: cover;
 }
 
-.masonry-column {
+.masonry-columns {
 	margin: 1.5em auto;
 	column-gap: 1em;
   	column-count: 4;
 }
 
-.gutterless, .gutterless .div {
+.gutterless, .gutterless .card {
 	column-gap: 0;
 	margin: 0;
+	border-radius: 0;
 }
 
 .no-corner {
