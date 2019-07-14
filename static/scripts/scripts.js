@@ -25,22 +25,22 @@ $(function() {
 // lazy loading everything in a card
 const cards = document.querySelectorAll(".card");
 
-		// lazyloading the images
-		const lazyLoad = target => {
-			const observer = new IntersectionObserver((entries, observer) => {
-				entries.forEach(entry => {
-					if (entry.isIntersecting) {
-						const img = entry.target.querySelector("img");
-						const src = img.getAttribute("data-src");
-						img.setAttribute("src", src);
-						observer.disconnect();
-					}
-				});
-			});
-			observer.observe(target);
-		};
+// lazyloading the images
+const lazyLoad = target => {
+	const observer = new IntersectionObserver((entries, observer) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				const img = entry.target.querySelector("img");
+				const src = img.getAttribute("data-src");
+				img.setAttribute("src", src);
+				observer.disconnect();
+			}
+		});
+	});
+	observer.observe(target);
+};
 
-		cards.forEach(lazyLoad);
+cards.forEach(lazyLoad);
 
 const overlay = document.querySelector(".overlay");
 const overlayImg = overlay.querySelector("img");
@@ -48,8 +48,7 @@ const overlayImg = overlay.querySelector("img");
 
 // When image is clicked, expand it
 function handleClick(e) {
-	const src = e.target.src;
-	overlayImg.src = src;
+	overlayImg.src = e.target.querySelector("img").src;
 	overlay.classList.add("open");
 }
 
