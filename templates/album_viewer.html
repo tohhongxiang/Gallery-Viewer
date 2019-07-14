@@ -1,4 +1,3 @@
-<!-- A basic carousel page to view the album -->
 {% extends "index.html" %}
 {% set active_page="albums" %}
 
@@ -39,9 +38,18 @@
 		<a class="right carousel-control-next" href="#image-carousel" data-slide="next">></a>
 	</div>
 
-	<btn class="btn btn-lg btn-outline-light" id="btn-back" onclick="javascript:history.go(-1)">🡐</btn>
+	<btn class="btn btn-lg btn-outline-light" id="btn-back" onclick="javascript:history.go(-1)">🡐</btn> 
 
-	
-	
-	
+	<div class="title">
+	 	<h2> {{ current_album_title }} </h2>
+	 </div>
+
+	<div class="card-columns" id="card-group">
+		{% for i in range(current_album_pics|length) %}
+			<div class="card hover-pointer">
+				<img class="card-img-top" src="{{url_for('static', filename='assets/unloaded.png')}}" data-src="{{url_for('static', filename='albums/' + current_album_title + '/' + current_album_pics[i])}}" alt={{current_album_pics[i]}} data-target="#image-carousel" data-slide-to={{ i }}>
+			</div>
+		{% endfor %}
+	</div>
+
 {%endblock%}

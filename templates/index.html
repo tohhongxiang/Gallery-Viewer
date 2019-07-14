@@ -1,6 +1,5 @@
 {% set navigation_bar = [
 	("/carousel", "carousel", "Carousel"),
-	("/list", "list", "List"),
 	("/albums", "albums", "Albums")
 	] %} <!-- Setting up navigation bar items -->
 
@@ -10,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Gallery viewer - {{title}}</title>
+	<title>Gallery viewer - {{active_page|title}}</title>
 	<!-- bootstrap css -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />

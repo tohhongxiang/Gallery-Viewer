@@ -1,4 +1,4 @@
-<!-- Simple bootstrap carousel to display images -->
+<!-- Simple bootstrap carousel to display images --> 
 {% extends "index.html" %}
 {% set active_page="carousel" %}
 
@@ -36,5 +36,24 @@
 		<a class="right carousel-control-next" href="#image-carousel" data-slide="next">></a>
 	</div>
 	 
+	 <div class="title">
+	 	<h2> Images </h2>
+	 </div>
+
+	 <div class="overlay"> <!-- Is display:none, with no img src. When an img is clicked, this appears and img src set to clicked img -->
+		<img>
+		<button class="close btn btn-outline-danger btn-close"> &times </button>
+	</div>
+	<div class="card-columns" id="card-group">
+		{% for i in range(images|length) %}
+			<div class="card hover-pointer">
+				<img class="card-img-top" src="{{url_for('static', filename='assets/unloaded.png')}}" data-src="{{url_for('static', filename='images/'+images[i])}}" alt={{images[i]}}>
+			</div>
+		{% endfor %}
+	</div>
+
+	<script>
+		
+	</script>
 	
 {%endblock%}

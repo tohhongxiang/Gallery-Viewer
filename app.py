@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, redirect
 from urllib.parse import unquote
 import os
 from random import shuffle
@@ -23,6 +23,9 @@ print(str(len(albums)) + " albums loaded")
 
 ######## ROUTES ###########
 @app.route("/")
+def index():
+	return redirect(url_for("carousel"))
+
 @app.route("/carousel")
 def carousel():
 	shuffle(images)
