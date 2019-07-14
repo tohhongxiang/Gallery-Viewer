@@ -44,7 +44,7 @@
 		<img>
 		<button class="close btn btn-outline-danger btn-close"> &times </button>
 	</div>
-	<div class="masonry-column gutterless" id="card-group">
+	<div class="card-columns gutterless" id="card-group">
 		{% for i in range(images|length) %}
 			<div class="card hover-pointer no-corner no-border">
 				<img class="card-img-top" src="{{url_for('static', filename='assets/unloaded.png')}}" data-src="{{url_for('static', filename='images/'+images[i])}}" alt={{images[i]}}>

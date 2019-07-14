@@ -31,11 +31,6 @@ def carousel():
 	shuffle(images)
 	return render_template("carousel.html", images=images)
 
-@app.route("/list")
-def list():
-	shuffle(images)
-	return render_template("list.html", images=images)
-
 @app.route("/albums")
 def albums():
 	return render_template("albums.html", album_pics=album_pics, album_titles=album_titles)
