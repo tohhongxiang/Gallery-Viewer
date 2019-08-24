@@ -1,0 +1,19 @@
+<!-- Simple layout to display what albums i have -->
+{% extends "index.html" %}
+{% set active_page="albums" %}
+
+{% block content %}
+<div class="albums">
+	{% for i in range(album_titles|length) %}
+	<a href="{{url_for('view_album', album=album_titles[i])}}">
+		<div class="album">
+			<img src="{{ album_pics[i][0] }}" alt="{{ album_pics[i][0] }}">
+
+			<div class="album-details">
+				<h6> {{album_titles[i]}} </h6>
+			</div>
+		</div>
+	</a>
+	{% endfor %}
+</div>
+{% endblock content %}

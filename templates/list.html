@@ -1,0 +1,56 @@
+<!-- Simple card column to display images -->
+{% extends "index.html" %}
+{% set active_page="list" %}
+
+{% block content %}
+	<div class="overlay"> <!-- Is display:none, with no img src. When an img is clicked, this appears and img src set to clicked img -->
+		<img>
+		<button class="close btn btn-outline-danger btn-close"> &times </button>
+	</div>
+	<div class="card-columns" id="card-group">
+		{% for i in range(images|length) %}
+			<div class="card hover-pointer">
+				<img class="card-img-top" src="{{url_for('static', filename='assets/unloaded.png')}}" data-src="{{url_for('static', filename='images/'+images[i])}}" alt={{images[i]}}>
+			</div>
+		{% endfor %}
+	</div>
+
+	<script>
+		const cards = document.querySelectorAll(".card");
+		const overlay = document.querySelector(".overlay");
+		const overlayImg = overlay.querySelector("img");
+		// const overlayClose = overlay.querySelector(".close");
+
+		// When image is clicked, expand it
+		function handleClick(e) {
+			const src = e.target.src;
+			overlayImg.src = src;
+			overlay.classList.add("open");
+		}
+
+		// handles closing the expanded image
+		function close() {
+			overlay.classList.remove("open");
+		}
+
+		cards.forEach(item => item.addEventListener("click", handleClick)); // select all cards, and when click, expand the image out
+		overlay.addEventListener("click", close); // when any click happens on the overlay, close the overlay
+
+		// lazyloading the images
+		const lazyLoad = target => {
+			const observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						const img = entry.target.querySelector("img");
+						const src = img.getAttribute("data-src");
+						img.setAttribute("src", src);
+						observer.disconnect();
+					}
+				});
+			});
+			observer.observe(target);
+		};
+
+		cards.forEach(lazyLoad);
+	</script>
+{% endblock content %}
