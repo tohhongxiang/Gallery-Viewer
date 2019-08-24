@@ -9,9 +9,9 @@ image_dir = "static/images"
 images = [image for image in os.listdir(image_dir) if image.split(".")[-1].lower() in ["jpg", "png", "jpeg", "bmp", "gif"]]
 
 album_dir = "static/albums"
-albums = os.listdir(album_dir)
+album_list = os.listdir(album_dir)
 album_dict = {}
-for album in albums:
+for album in album_list:
 	album_dict[album] = [os.path.join(album_dir, album, image) for image in os.listdir(os.path.join(album_dir, album))]
 	#album_dict[album] = os.listdir(os.path.join(album_dir, album))
 
@@ -19,7 +19,7 @@ album_pics = list(album_dict.values())
 album_titles = list(album_dict.keys())
 
 print(str(len(images)) + " images loaded")
-print(str(len(albums)) + " albums loaded")
+print(str(len(album_list)) + " albums loaded")
 
 ######## ROUTES ###########
 @app.route("/")
