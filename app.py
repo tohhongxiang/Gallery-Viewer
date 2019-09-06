@@ -44,4 +44,4 @@ def view_album(album):
 
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run()
